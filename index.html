@@ -1,818 +1,211 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delphi Study | Clinical Pharmacy in Mental Health</title>
-  <meta
-    name="description"
-    content="European modified e-Delphi study defining the core roles and activities of clinical pharmacists working in mental health."
-  />
-  <style>
-    :root {
-      --bg: #f5f7fa;
-      --surface: #ffffff;
-      --surface-soft: #f9fbfc;
-      --text: #1f2937;
-      --muted: #5f6b7a;
-      --line: #d8e0e8;
-      --primary: #153e75;
-      --primary-soft: #eaf1f8;
-      --accent: #0f766e;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-      --maxw: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", Arial, sans-serif;
-      color: var(--text);
-      background:
-        linear-gradient(180deg, #f4f7fb 0%, #f7f9fb 220px, #f5f7fa 100%);
-      line-height: 1.65;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(var(--maxw), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      border-bottom: 1px solid rgba(216, 224, 232, 0.8);
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 30;
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 70px;
-    }
-
-    .brand {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 0.02em;
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      font-size: 0.95rem;
-    }
-
-    .nav a {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .hero {
-      padding: 64px 0 34px;
-    }
-
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero-topline {
-      height: 6px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 32px;
-      padding: 34px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      border: 1px solid #d5e3f3;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.84rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: #102a43;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 22px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .meta-pill {
-      background: #f8fafc;
-      border: 1px solid var(--line);
-      color: #334155;
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .logo-panel {
-      background: linear-gradient(180deg, #fbfdff 0%, #f4f8fb 100%);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 22px;
-      min-height: 100%;
-    }
-
-    .logo-panel h3 {
-      margin: 0;
-      font-size: 1rem;
-      color: #24446a;
-    }
-
-    .logos {
-      display: grid;
-      gap: 18px;
-    }
-
-    .logo-box {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 110px;
-    }
-
-    .logo-box img {
-      max-width: 100%;
-      max-height: 72px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .section {
-      padding: 18px 0 26px;
-    }
-
-    .section-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      margin: 0 0 10px;
-      color: #102a43;
-      letter-spacing: -0.02em;
-    }
-
-    .section-lead {
-      color: var(--muted);
-      font-size: 1.02rem;
-      margin: 0 0 26px;
-      max-width: 880px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px 18px;
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      line-height: 1;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .stat-label {
-      font-size: 0.94rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 24px;
-    }
-
-    .panel {
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .panel h3 {
-      margin: 0 0 12px;
-      font-size: 1.08rem;
-      color: #163b63;
-    }
-
-    .panel p {
-      margin: 0;
-      color: var(--text);
-    }
-
-    .domains-intro {
-      margin-bottom: 22px;
-    }
-
-    .accordion {
-      display: grid;
-      gap: 14px;
-    }
-
-    .domain {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .domain summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 20px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
-      font-weight: 700;
-      color: #14375f;
-      font-size: 1.02rem;
-    }
-
-    .domain summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .domain summary .left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .domain-badge {
-      min-width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-size: 0.92rem;
-      font-weight: 800;
-      border: 1px solid #d6e2ef;
-    }
-
-    .domain-arrow {
-      color: var(--muted);
-      transition: transform 0.2s ease;
-      font-size: 1.2rem;
-    }
-
-    details[open] .domain-arrow {
-      transform: rotate(180deg);
-    }
-
-    .domain-content {
-      padding: 0 22px 22px;
-      border-top: 1px solid var(--line);
-      background: #fcfdff;
-    }
-
-    .items-list {
-      margin: 18px 0 0;
-      padding-left: 22px;
-    }
-
-    .items-list li {
-      margin-bottom: 12px;
-      color: #243447;
-    }
-
-    .items-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .small-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .footer {
-      padding: 22px 0 60px;
-    }
-
-    .footer-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      box-shadow: var(--shadow);
-      display: grid;
-      gap: 10px;
-    }
-
-    .footer-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #163b63;
-      margin: 0;
-    }
-
-    .footer p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .funding-strip {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .funding-logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .funding-logos img {
-      height: 46px;
-      object-fit: contain;
-      display: block;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .topbar-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(var(--maxw), calc(100% - 20px));
-      }
-
-      .hero {
-        padding-top: 26px;
-      }
-
-      .hero-grid,
-      .section-card {
-        padding: 20px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        gap: 12px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">DELPHI STUDY | CLINICAL PHARMACY IN MENTAL HEALTH</div>
-      <nav class="nav">
-        <a href="#overview">Overview</a>
-        <a href="#domains">Domains</a>
-        <a href="#funding">Funding</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-topline"></div>
-          <div class="hero-grid">
-            <div>
-              <div class="eyebrow">European modified e-Delphi consensus study</div>
-              <h1>Key Activities and Roles of Clinical Pharmacists Working in Mental Health</h1>
-              <p class="subtitle">
-                This page presents the final consensus-based framework developed through a
-                European modified e-Delphi study conducted within the Mental Health Special Interest Group
-                of the European Society of Clinical Pharmacy (ESCP).
-              </p>
-
-              <div class="hero-meta">
-                <div class="meta-pill">2 Delphi rounds</div>
-                <div class="meta-pill">7 practice domains</div>
-                <div class="meta-pill">40 final consensus criteria</div>
-               <div class="meta-pill">Experts from 13 European countries</div>
-              </div>
-            </div>
-
-            <aside class="logo-panel">
-              <h3>Project and institutional logos</h3>
-              <div class="logos">
-                <div class="logo-box">
-                  <img src="logo-escp.png" alt="ESCP logo" />
-                </div>
-                <div class="logo-box">
-                  <img src="logo-netpharm.png" alt="NETPHARM logo" />
-                </div>
-                <div class="logo-box">
-                  <img src="logo-eu.png" alt="EU funding logo" />
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="overview" class="section">
-      <div class="container">
-        <div class="section-card">
-          <h2 class="section-title">Study overview</h2>
-          <p class="section-lead">
-            The aim of the study was to establish a structured, consensus-based framework of key clinical activities for clinical pharmacists working in mental health across Europe. The study involved experts from 13 European countries.
-          </p>
-
-          <div class="stats">
-            <div class="stat">
-  <div class="stat-number">39</div>
-  <div class="stat-label">Experts from 13 European countries</div>
-</div>
-            <div class="stat">
-              <div class="stat-number">32</div>
-              <div class="stat-label">Completed Round 1</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">27</div>
-              <div class="stat-label">Completed Round 2</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">40/45</div>
-              <div class="stat-label">Criteria reaching final consensus</div>
-            </div>
-          </div>
-
-          <div class="intro-grid">
-            <div class="panel">
-              <h3>Background</h3>
-              <p>
-                Clinical pharmacy services in mental health have developed heterogeneously across Europe.
-                Although competency frameworks exist, a clearly structured and agreed European list of
-                core clinical activities in routine mental health pharmacy practice has been lacking.
-              </p>
-            </div>
-
-            <div class="panel">
-              <h3>What this page shows</h3>
-              <p>
-                Below is the final set of consensus-based criteria organised into seven domains.
-                These domains reflect the main areas in which clinical pharmacists contribute to safe,
-                effective, and person-centred psychopharmacotherapy.
-              </p>
-            </div>
-          </div>
-
-    
-        </div>
-      </div>
-    </section>
-
-    <section id="domains" class="section">
-      <div class="container">
-        <div class="section-card">
-          <h2 class="section-title">Final consensus domains</h2>
-          <p class="section-lead domains-intro">
-            The final framework comprises seven domains covering medicines optimisation,
-            physical health monitoring, person-centred care, interprofessional collaboration,
-            advanced roles, governance, and research or service development.
-          </p>
-
-          <div class="accordion">
-
-            <details class="domain" open>
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D1</div>
-                  <div>Medicines Optimisation</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-          <div class="items-list">
-
-
-<p><strong>1.</strong> Conduct comprehensive medication reviews for individuals with mental illness including pharmacotherapy across specialties. This includes reviewing the appropriateness of the following prescribing parameters relating to each medication: (i) indication, including optimised selection within the drug class; (ii) duration of treatment; (iii) potential for drug-drug and drug-disease interactions; (iv) proactive management, including prevention of adverse drug reactions and other medicine-related problems. <span style="color:#6b7280;">(1a)</span></p>
-
-<p><strong>2.</strong> Prioritise structured medication review in older adults and others with multimorbidities (e.g., cardiac, renal, or hepatic impairment), polypharmacy, frailty, or use of higher-risk psychotropic medicines (e.g., high-dose antipsychotics, lithium, anticholinergic drugs, benzodiazepines) to reduce treatment burden, prevent medication-related harm, and improve quality of life. <span style="color:#6b7280;">(1b)</span></p>
-
-<p><strong>3.</strong> Use validated tools (e.g., Beers, STOPP/START) within comprehensive medication reviews to recommend safer alternatives and minimise the risk of prescribing cascades. <span style="color:#6b7280;">(1c)</span></p>
-
-<p><strong>4.</strong> Provide medication reviews within both primary and secondary care settings. <span style="color:#6b7280;">(1d)</span></p>
-
-<p><strong>5.</strong> Ensure medication reconciliation is completed. Medicines reconciliation includes ensuring an accurate and complete medication history is taken, identifying and resolving discrepancies, and reviewing pharmacotherapy in collaboration with the multidisciplinary team. Reconciliation may be repeated in community, primary care settings, and at transition points with follow-up reviews added as needed to ensure safe and coordinated care delivery. <span style="color:#6b7280;">(1e)</span></p>
-
-<p><strong>6.</strong> Provide seamless care, including during admission and transitions of care, including discharge. <span style="color:#6b7280;">(1f)</span></p>
-
-<p><strong>7.</strong> Support adherence through tailored interventions and facilitate shared decision-making within consultations (e.g., support with long-acting injectable antipsychotic administration, management of adverse effects, etc.). <span style="color:#6b7280;">(1g)</span></p>
-
-<p><strong>8.</strong> Manage clinically significant drug interactions (including drug-drug, drug-gene, and drug-disease, etc.). <span style="color:#6b7280;">(1h)</span></p>
-
-<p><strong>9.</strong> Optimise use of high-risk psychotropics (including clozapine and long-acting injectable antipsychotics/high-dose antipsychotics), including adherence to physical health monitoring requirements. <span style="color:#6b7280;">(1i)</span></p>
-
-<p><strong>10.</strong> Optimise the prescribing of psychotropic medication using pharmacokinetic and pharmacogenomic tools, as appropriate. <span style="color:#6b7280;">(1j)</span></p>
-
-<p><strong>11.</strong> Make therapeutic substitutions where appropriate (e.g., formulary limitations, medicine shortages) ensuring equivalent efficacy and safety. <span style="color:#6b7280;">(1k)</span></p>
-
-<p><strong>12.</strong> Provide interventions at multiple points of care, including admission and transitions of care, including discharge. <span style="color:#6b7280;">(1l)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D2</div>
-                  <div>Physical Health Monitoring and Interventions</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-                <div class="items-list">
-
-<p><strong>13.</strong> Recognise and flag physical–mental health interdependencies relevant to pharmacotherapy (e.g., medication-related metabolic effects) and recommend appropriate assessment, review, or referral within the multidisciplinary team. <span style="color:#6b7280;">(2a)</span></p>
-
-<p><strong>14.</strong> Recommend and implement physical health and lifestyle interventions for people with mental illness, including smoking cessation services, weight management, preventive screening programmes, and protocols supporting individuals with somatic comorbidities or medication-related risks (e.g., clozapine). <span style="color:#6b7280;">(2c)</span></p>
-
-<p><strong>15.</strong> Use relevant tools, where available, to support identification of physical health risks and to guide recommendations for modifiable lifestyle factors. <span style="color:#6b7280;">(2d)</span></p>
-
-<p><strong>16.</strong> Support monitoring and optimisation of chronic conditions in people receiving psychotropic medication by identifying medication-related risks, prompting appropriate follow-up, and collaborating with the multidisciplinary team. <span style="color:#6b7280;">(2e)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D3</div>
-                  <div>Person-Centred Care and Counselling</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-               <div class="items-list">
-
-<p><strong>17.</strong> Provide person-centred pharmaceutical care in relation to medicines, involving individuals (and, where appropriate, families or carers) in shared decision-making about pharmacotherapy within the multidisciplinary team. <span style="color:#6b7280;">(3a)</span></p>
-
-<p><strong>18.</strong> Provide medication counselling and medicines-related education to the people using them, including families or carers, supporting understanding, adherence, and shared treatment goals, while respecting individual cognitive and health literacy needs. <span style="color:#6b7280;">(3b)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D4</div>
-                  <div>Interprofessional Collaboration and Care Coordination</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-               <div class="items-list">
-
-<p><strong>19.</strong> Integrate into multidisciplinary teams to provide expert pharmaceutical input. <span style="color:#6b7280;">(4a)</span></p>
-
-<p><strong>20.</strong> Collaborate across care settings with pharmacists (hospital, community, general practice) and other healthcare professionals (e.g., psychiatrists, GPs, nurses, geriatricians, social workers, occupational therapists) to ensure safe and effective treatment and continuity of care, particularly during transitions of care (including admission, discharge, and primary care). <span style="color:#6b7280;">(4b)</span></p>
-
-<p><strong>21.</strong> Document and communicate care plans, actions, and outcomes in a timely manner to support collaborative decision-making among the team. <span style="color:#6b7280;">(4c)</span></p>
-
-<p><strong>22.</strong> Engage in professional networks and representative groups at local, national, and international levels to support service development and professional advocacy. <span style="color:#6b7280;">(4d)</span></p>
-
-<p><strong>23.</strong> Contribute, where relevant and feasible, to discussions on funding or reimbursement models to demonstrate the value of mental health pharmacy services within the healthcare system. <span style="color:#6b7280;">(4e)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D5</div>
-                  <div>Advanced and Extended Roles</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-             <div class="items-list">
-
-<p><strong>24.</strong> Facilitate medicines-focused group-based interventions (e.g., education about psychotropic medicines, adherence support, and management of adverse effects), where appropriate within scope of practice. <span style="color:#6b7280;">(5e)</span></p>
-
-<p><strong>25.</strong> Offer community post-discharge services, including medicines reconciliation, outpatient medication reviews, and adherence support. <span style="color:#6b7280;">(5f)</span></p>
-
-<p><strong>26.</strong> Optimise the use of new technologies to support medication-related decision-making (e.g., clinical decision-support systems, electronic prescribing tools, medication safety software, pharmacogenomic decision tools). <span style="color:#6b7280;">(5g)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D6</div>
-                  <div>Administrative and Governance Activities</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-              <div class="items-list">
-
-<p><strong>27.</strong> Manage references and monitor high-risk medications to ensure safe use. <span style="color:#6b7280;">(6a)</span></p>
-
-<p><strong>28.</strong> Conduct audits of prescribing practices and adherence to best practice standards. <span style="color:#6b7280;">(6b)</span></p>
-
-<p><strong>29.</strong> Contribute to formulary decision-making regarding approved medications. <span style="color:#6b7280;">(6c)</span></p>
-
-<p><strong>30.</strong> Develop and review clinical practice guidelines, clinical pharmacy guidance, and decision-making tools to support safe and effective prescribing in mental health. <span style="color:#6b7280;">(6d)</span></p>
-
-<p><strong>31.</strong> Implement local and national practice recommendations, where relevant (e.g., medication-related monitoring protocols) across clinical teams and within the service. <span style="color:#6b7280;">(6e)</span></p>
-
-</div>
-              </div>
-            </details>
-
-            <details class="domain">
-              <summary>
-                <div class="left">
-                  <div class="domain-badge">D7</div>
-                  <div>Research, Education, Service Development and Quality Improvement</div>
-                </div>
-                <div class="domain-arrow">⌄</div>
-              </summary>
-              <div class="domain-content">
-              <div class="items-list">
-
-<p><strong>32.</strong> Lead or participate in research, including clinical trials relevant to pharmacy services in mental health. <span style="color:#6b7280;">(7a)</span></p>
-
-<p><strong>33.</strong> Collaborate within academic and professional networks to conduct research relevant to mental health pharmacy. <span style="color:#6b7280;">(7b)</span></p>
-
-<p><strong>34.</strong> Provide education and mentorship to advance evidence-based mental health pharmacy practice. <span style="color:#6b7280;">(7c)</span></p>
-
-<p><strong>35.</strong> Undertake quality improvement and service development projects. <span style="color:#6b7280;">(7d)</span></p>
-
-<p><strong>36.</strong> Establish and monitor quality indicators to demonstrate the effectiveness of mental health pharmacy services. <span style="color:#6b7280;">(7e)</span></p>
-
-<p><strong>37.</strong> Teach clinical pharmacy in mental health, including within undergraduate and postgraduate programmes, and among pharmacists and other healthcare professions. <span style="color:#6b7280;">(7f)</span></p>
-
-<p><strong>38.</strong> Supervise undergraduate research, including thesis/dissertation supervision. <span style="color:#6b7280;">(7g)</span></p>
-
-<p><strong>39.</strong> Conduct projects in mental health pharmacy to support innovation, service development, and reimbursement models. <span style="color:#6b7280;">(7h)</span></p>
-
-<p><strong>40.</strong> Disseminate results associated with service evaluation to relevant stakeholders, including healthcare leaders, policymakers, and the public. <span style="color:#6b7280;">(7i)</span></p>
-
-</div>
-              </div>
-            </details>
-
-          </div>
-
-
-        </div>
-      </div>
-    </section>
-
-    <section id="funding" class="section footer">
-      <div class="container">
-        <div class="footer-card">
-          <h2 class="footer-title">Acknowledgement and funding</h2>
-          <p>
-            This project page reflects work developed within the ESCP Mental Health Special Interest Group
-            and the NETPHARM research programme. The underlying study draft acknowledges support from the
-            project “New Technologies for Translational Research in Pharmaceutical Sciences (NETPHARM)”
-            and from institutional research support at the Faculty of Pharmacy, Charles University.
-          </p>
-
-          <div class="funding-strip">
-            <div>
-              <strong>Suggested contact block:</strong><br />
-              Ivana Tašková<br />
-              Department of Clinical Pharmacy, Psychiatric Hospital Bohnice<br />
-              Faculty of Pharmacy, Charles University
-            </div>
-
-            <div class="funding-logos">
-              <img src="logo-escp.png" alt="ESCP logo small" />
-              <img src="logo-netpharm.png" alt="NETPHARM logo small" />
-              <img src="logo-eu.png" alt="EU funding logo small" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-</body>
-</html>
+---
+title: "Consensus-Based Framework of Core Clinical Activities for Clinical Pharmacists in Mental Health"
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f6f7f9;
+    color: #1e1e1e;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    color: #2e3a59;
+    font-weight: 600;
+  }
+
+  h1 {
+    background: linear-gradient(90deg, #c9d8f0, #e6e0f8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  details {
+    background: #ffffff;
+    border: 1px solid #d3d6df;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  summary {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2e3a59;
+    cursor: pointer;
+  }
+
+  li {
+    margin-bottom: 12px;
+  }
+
+  .domain-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2e3a59;
+    margin-top: 40px;
+  }
+
+  .section-box {
+    background: #f0f3f8;
+    border-left: 4px solid #7f8fb8;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+  }
+</style>
+
+
+# Consensus-Based Framework of Core Clinical Activities  
+### *Final Criteria Set (n = 40)*  
+**ESCP Mental Health Special Interest Group (SIG)**
+
+---
+
+## 🧩 Study Overview
+This framework represents the final consensus-based set of 40 clinical activities identified through a two‑round modified electronic Delphi (e‑Delphi) study involving **39 expert clinical pharmacists from 13 European countries**.  
+The goal was to define the **core clinical activities** performed by clinical pharmacists working in mental health across diverse healthcare systems.
+
+This webpage provides an accessible dissemination tool for expert panelists, stakeholders, and members of the ESCP Mental Health SIG.
+
+---
+
+## 🔬 Methodology Summary
+- **Study design:** Modified electronic Delphi (e‑Delphi)  
+- **Rounds:** Two  
+- **Participants:** 39 clinical pharmacists (13 countries)  
+- **Eligibility:** ≥3 years of clinical pharmacy practice in mental health  
+- **Rating scale:** 4‑point Likert  
+- **Consensus definition:**  
+  - ≥80% agreement  
+  - Median ≥3  
+  - IQR ≤1  
+
+A total of **40 out of 45 criteria reached full consensus** and form the final framework.
+
+---
+
+# ✅ Final Consensus Criteria  
+Below are the **40 final consensus-based clinical activities**, organised into seven domains.
+
+---
+
+# **Domain 1 — Medicines Optimisation**
+
+<details><summary>Expand Domain 1</summary>
+
+1. Conduct comprehensive medication reviews for individuals with mental illness, including appropriateness of indication, drug selection, duration, interactions, and prevention of adverse effects.  
+2. Prioritise structured medication review in older adults or individuals with multimorbidities, polypharmacy, frailty, or high‑risk psychotropic use.  
+3. Use validated tools (e.g., Beers, STOPP/START) to recommend safer alternatives and minimise prescribing cascades.  
+4. Provide medication reviews across primary and secondary care settings.  
+5. Ensure medicines reconciliation across transitions, including complete history and discrepancy resolution.  
+6. Provide seamless care during admission, discharge, and other transitions.  
+7. Support adherence through tailored interventions and shared decision‑making (e.g., LAI support, adverse effect management).  
+8. Manage clinically significant interactions (drug–drug, drug–gene, drug–disease).  
+9. Optimise use of high‑risk psychotropics (clozapine, LAIs, high‑dose antipsychotics) with monitoring compliance.  
+10. Use pharmacokinetic and pharmacogenomic tools to optimise prescribing.  
+11. Make therapeutic substitutions when appropriate while ensuring equivalent efficacy and safety.  
+12. Provide interventions at multiple points of care, including during transitions.  
+
+</details>
+
+---
+
+# **Domain 2 — Physical Health Monitoring and Interventions**
+
+<details><summary>Expand Domain 2</summary>
+
+13. Recognise and flag physical–mental health interdependencies relevant to pharmacotherapy.  
+14. Recommend and implement physical health and lifestyle interventions (e.g., smoking cessation, weight management, screening).  
+15. Use validated tools to identify physical health risks and guide recommendations.  
+16. Support monitoring and optimisation of chronic conditions in individuals receiving psychotropics.  
+
+</details>
+
+---
+
+# **Domain 3 — Person-Centred Care and Counselling**
+
+<details><summary>Expand Domain 3</summary>
+
+17. Provide person‑centred pharmaceutical care, involving individuals, families, or carers in shared decision‑making.  
+18. Provide medication counselling and medicines-related education, respecting cognitive and health literacy needs.  
+
+</details>
+
+---
+
+# **Domain 4 — Interprofessional Collaboration and Care Coordination**
+
+<details><summary>Expand Domain 4</summary>
+
+19. Integrate into multidisciplinary teams to provide specialised pharmaceutical input.  
+20. Collaborate across care settings to ensure continuity of care, especially during transitions.  
+21. Document and communicate care plans and outcomes to support collaborative decision‑making.  
+22. Engage in professional networks (local, national, international) to support service development and advocacy.  
+23. Contribute to discussions on funding or reimbursement models relevant to mental health pharmacy services.  
+
+</details>
+
+---
+
+# **Domain 5 — Advanced and Extended Roles**
+
+<details><summary>Expand Domain 5</summary>
+
+24. Facilitate medicines‑focused group interventions (education, adherence support, adverse effect management).  
+25. Provide community post‑discharge services, including medicines reconciliation and outpatient medication reviews.  
+26. Optimise the use of new technologies supporting medication-related decision‑making (CDSS, e‑prescribing, pharmacogenomics).  
+
+</details>
+
+---
+
+# **Domain 6 — Administrative and Governance Activities**
+
+<details><summary>Expand Domain 6</summary>
+
+27. Manage references and monitor high‑risk medications to ensure safe use.  
+28. Conduct audits of prescribing practices and adherence to best practice standards.  
+29. Contribute to formulary decision‑making.  
+30. Develop and review guidelines and decision-support tools to promote safe prescribing.  
+31. Implement relevant local and national practice recommendations within clinical teams.  
+
+</details>
+
+---
+
+# **Domain 7 — Research, Education, Service Development & Quality Improvement**
+
+<details><summary>Expand Domain 7</summary>
+
+32. Lead or participate in research, including clinical trials.  
+33. Collaborate with academic and professional networks on research in mental health pharmacy.  
+34. Provide education and mentorship to support evidence‑based practice.  
+35. Undertake quality improvement and service development projects.  
+36. Establish and monitor quality indicators for mental health pharmacy services.  
+37. Teach clinical pharmacy in mental health within undergraduate, postgraduate, or interprofessional programmes.  
+38. Supervise undergraduate research, including theses or dissertations.  
+39. Conduct projects supporting innovation, service development, and reimbursement models.  
+40. Disseminate service evaluation findings to healthcare leaders, policymakers, and the public.  
+
+</details>
+
+---
+
+## 💠 Funding
+This study was supported by the project **New Technologies for Translational Research in Pharmaceutical Sciences (NETPHARM)**  
+Project ID: *CZ.02.01.01/00/22_008/0004607*, co‑funded by the European Union.  
+Additional support was provided by the **Cooperatio (KSKF‑1)** programme at the Faculty of Pharmacy, Charles University.
+
+---
+
+## 🙏 Acknowledgement
+We thank all expert panelists and contributing institutions for their essential input in developing this European consensus framework.
