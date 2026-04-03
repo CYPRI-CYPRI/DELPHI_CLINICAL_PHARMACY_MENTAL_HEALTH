@@ -553,6 +553,37 @@
         font-size: 0.98rem;
       }
     }
+    .funding-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.funding-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.funding-right {
+  display: flex;
+  align-items: center;
+}
+
+.funding-right img {
+  height: 40px;
+}
+    @media (max-width: 640px) {
+  .funding-strip {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .funding-right {
+    justify-content: center;
+  }
+}
   </style>
 </head>
 <body>
@@ -825,8 +856,16 @@
             and from institutional research support at the Faculty of Pharmacy, Charles University.
           </p>
 
-          <div class="funding-strip">
-            <div>
+         <div class="funding-strip">
+  <div class="funding-left">
+    <img src="logo-escp.png" alt="ESCP">
+    <img src="logo-netpharm-icon.png" alt="NETPHARM">
+  </div>
+
+  <div class="funding-right">
+    <img src="logo-eu.png" alt="EU funding">
+  </div>
+</div>
           <h3>Correspondence</h3>
 Ivana Tašková<br>
 Department of Clinical Pharmacy, Psychiatric Hospital Bohnice<br>
@@ -836,7 +875,6 @@ Email: <a href="mailto:taskova.ivana@gmail.com">taskova.ivana@gmail.com</a>
 
             <div class="funding-logos">
               <img src="logo-escp.png" alt="ESCP logo small" />
-              <img src="logo-netpharm.png" alt="NETPHARM logo small" />
               <img src="logo-eu.png" alt="EU funding logo small" />
             </div>
           </div>
