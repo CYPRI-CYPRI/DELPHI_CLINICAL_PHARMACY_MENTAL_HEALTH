@@ -476,17 +476,62 @@
       margin: 0;
       color: var(--muted);
     }
+.funding-strip {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+    .funding-left {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+}
 
-    .funding-strip {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      justify-content: space-between;
-    }
+.funding-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.funding-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.funding-logos img,
+.funding-left img,
+.funding-right img {
+  height: 42px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-card,
+.funding-strip,
+.funding-left,
+.funding-right {
+  max-width: 100%;
+}
+
+.footer-card p,
+.footer-card div,
+.footer-card a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
     .funding-logos {
       display: flex;
@@ -495,11 +540,15 @@
       align-items: center;
     }
 
-    .funding-logos img {
-      height: 46px;
-      object-fit: contain;
-      display: block;
-    }
+.funding-logos img,
+.funding-left img,
+.funding-right img {
+  height: 42px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 
     @media (max-width: 980px) {
       .hero-grid,
@@ -553,22 +602,30 @@
         font-size: 0.98rem;
       }
     }
-    .funding-strip {
+.funding-strip {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .funding-left {
   display: flex;
-  gap: 16px;
-  align-items: center;
+  gap: 14px;.footer-card,  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .funding-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .funding-right img {
@@ -856,28 +913,22 @@
             and from institutional research support at the Faculty of Pharmacy, Charles University.
           </p>
 
-         <div class="funding-strip">
-  <div class="funding-left">
-    <img src="logo-escp.png" alt="ESCP">
-    <img src="logo-netpharm-icon.png" alt="NETPHARM">
+<div class="funding-strip">
+
+  <div>
+    <h3>Correspondence</h3>
+    Ivana Tašková<br>
+    Department of Clinical Pharmacy, Psychiatric Hospital Bohnice<br>
+    Faculty of Pharmacy, Charles University<br>
+    Email: <a href="mailto:taskova.ivana@gmail.com">taskova.ivana@gmail.com</a>
   </div>
 
-  <div class="funding-right">
-    <img src="logo-eu.png" alt="EU funding">
+  <div class="funding-logos">
+    <img src="logo-escp.png" alt="ESCP logo small" />
+    <img src="logo-eu.png" alt="EU funding logo small" />
   </div>
+
 </div>
-          <h3>Correspondence</h3>
-Ivana Tašková<br>
-Department of Clinical Pharmacy, Psychiatric Hospital Bohnice<br>
-Faculty of Pharmacy, Charles University<br>
-Email: <a href="mailto:taskova.ivana@gmail.com">taskova.ivana@gmail.com</a>
-            </div>
-
-            <div class="funding-logos">
-              <img src="logo-escp.png" alt="ESCP logo small" />
-              <img src="logo-eu.png" alt="EU funding logo small" />
-            </div>
-          </div>
         </div>
       </div>
     </section>
