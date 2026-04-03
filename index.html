@@ -480,11 +480,10 @@
   margin-top: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
+
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;   /* 🔥 KLÍČ */
+  gap: 16px;
 }
     .funding-left {
   display: flex;
@@ -504,9 +503,13 @@
 
 .funding-logos {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.funding-logos img {
+  height: 40px;
 }
 
 .funding-logos img,
